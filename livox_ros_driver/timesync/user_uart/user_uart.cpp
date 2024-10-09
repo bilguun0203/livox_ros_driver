@@ -86,9 +86,9 @@ int UserUart::Close() {
 /** sets up the port parameters */
 int UserUart::Setup(uint8_t baudrate_index, uint8_t parity) {
   static uint32_t baud_map[19] = {
-      B2400,    B4800,    B9600,    B19200,   B38400,  B57600,   B115200,
-      B230400,  B460800,  B500000,  B576000,  B921600, B1152000, B1500000,
-      B2000000, B2500000, B3000000, B3500000, B4000000};
+      BR2400,    BR4800,    BR9600,    BR19200,   BR38400,  BR57600,   BR115200,
+      BR230400,  BR460800,  BR500000,  BR576000,  BR921600, BR1152000, BR1500000,
+      BR2000000, BR2500000, BR3000000, BR3500000, BR4000000};
   tcflag_t baudrate;
   struct termios options;
 
@@ -115,7 +115,7 @@ int UserUart::Setup(uint8_t baudrate_index, uint8_t parity) {
   // options.c_oflag &= ~OPOST;
 
   /** set boadrate */
-  options.c_cflag &= ~CBAUD;
+  // options.c_cflag &= ~CBAUD;
   baudrate = baud_map[baudrate_index];
   options.c_cflag |= baudrate;
 
